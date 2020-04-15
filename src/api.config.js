@@ -1,6 +1,9 @@
 const api_config = {
     employees: 'http://localhost:8080/api/employees',
-    companyArr: 'http://localhost:8080/api/company'
+    careers: 'http://localhost:8080/api/careers',
+    API_ENDPOINT: 'http://localhost:8080/api',
+    TOKEN_KEY: 'employees-client-auth-token',
+
 }
 
 export default api_config;
