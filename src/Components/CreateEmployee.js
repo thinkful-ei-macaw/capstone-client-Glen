@@ -1,7 +1,61 @@
 import React, { Component } from 'react'
+import NoteContext from '../NoteContext'
 import { Link } from 'react-router-dom'
 
 export default class CreateEmployee extends Component {
+
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            first_name: '',
+            last_name: '',
+            address: '',
+            city: '',
+            state: '',
+            zip_code: '',
+            phone: '',
+            career_id: '',
+            user_id: ''
+        }
+    }
+
+    getCareerId = (careerName) => {
+        const currentCareer = this.props.careers.find(
+            career => career.position === careerName
+        )
+        return currentCareer.id
+    }
+
+    getUserId = (userName) => {
+        const currentUser = this.props.users.find(
+            user => user.username === userName
+        )
+        return currentUser.id
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const firstName = this.state.first_name;
+        const lastName = this.state.last_name;
+        const address = this.state.address;
+        const city = this.state.city;
+        const state = this.state.state;
+        const zipCode = this.state.zip_code;
+        const phone = this.state.phone;
+        const careerId = this.getCareerId(this.state.career_id);
+        const userId = this.getUserId(this.state.user_id)
+
+        // const employee = {
+        //     first
+        // }
+    }
+
+
+
+
+    static contextType = NoteContext;
+
     render() {
         return (
             <div>
@@ -38,11 +92,8 @@ export default class CreateEmployee extends Component {
                                 <input type="text" id="phone" value=" 702-123-4567" />
                             </div>
                             <div>
-                                <select>
-                                    <option value="Select_Career_Field">-Select Career Field-</option>
-                                    <option value="Full_Stack_Developer">Full Stack Developer</option>
-                                    <option value="Back_End_Developer">Back End Developer</option>
-                                    <option value="Front_End_Developer">Front End Developer</option>
+                                <select name="careers">
+                                    {this.context.careers.map(career => <option value={career.id}>{career.position}</option>)}
                                 </select>
                             </div>
                             <Link to='/profile_success'>

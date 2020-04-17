@@ -19,18 +19,19 @@ export default class EmployeeList extends Component {
                 </header>
                 <ul>
 
-                    {this.context.employees.map(data => {
+                    {this.context.employees.map(employee => {
+                        console.log(this.context.careers.id)
                         return (
-                            <li key={data.id}>
-                                <p>First Name: {data.first_name}</p>
-                                <p>Last Name: {data.last_name}</p>
-                                <p>Address: {data.address}</p>
-                                <p>City: {data.city}</p>
-                                <p>State: {data.state}</p>
-                                <p>Zip Code: {data.zip_code}</p>
-                                <p>Phone: {data.phone}</p>
-                                <Link to='/career_list'>
-                                    <button type="button">View Career data</button>
+                            <li key={employee.id}>
+                                <p>First Name: {employee.first_name}</p>
+                                <p>Last Name: {employee.last_name}</p>
+                                <p>Address: {employee.address}</p>
+                                <p>City: {employee.city}</p>
+                                <p>State: {employee.state}</p>
+                                <p>Zip Code: {employee.zip_code}</p>
+                                <p>Phone: {employee.phone}</p>
+                                <Link to={`/career_list/${employee.career_id}`}>
+                                    <button type="button">View Career employee</button>
                                 </Link>
                             </li>
 

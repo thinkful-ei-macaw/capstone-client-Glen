@@ -1,19 +1,33 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+// import { Route, Redirect } from 'react-router-dom'
+import TokenService from '../../src/Services/token-service'
+import NoteContext from '../NoteContext';
 
 export default class MainPage extends Component {
+
+    static contextType = NoteContext
+
+    handleLogoutClick = () => {
+        TokenService.clearAuthToken()
+    }
+
+
     render() {
+        console.log(this.context.users.username)
         return (
             <div>
                 <main>
                     <nav>
                         <span>Data Tech Systems</span>
                         <Link to='/'>
-                            <button type="button">Log Out</button>
+                            <button type="button" onClick={this.handleLogoutClick}>Log Out</button>
                         </Link>
                     </nav>
 
+
                     <section class="welcome">
+
                         <h1>Welcome (Username)</h1>
                         <h2>Please select from the options below</h2>
                     </section>

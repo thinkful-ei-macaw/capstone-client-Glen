@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import NoteContext from '../NoteContext'
 import '../Styles/LandingPage.css'
 
 export default class LandingPage extends Component {
+
+    static contextType = NoteContext
+
     render() {
+        console.log(this.context.users.username)
         return (
             <div>
 
@@ -16,6 +21,7 @@ export default class LandingPage extends Component {
                     </header>
 
                     <section>
+                        <p>This is user {this.context.users.username}</p>
                         <header>
                             <h2>Built for Managers like you</h2>
                         </header>
@@ -54,9 +60,6 @@ export default class LandingPage extends Component {
                         <header>
                             <h3>Log into your account</h3>
                         </header>
-                        <Link to='/main_page'>
-                            <button className="main_page_link" type="submit">Take to Main</button>
-                        </Link>
                         <Link to='/login'>
                             <button className='log_in_btn'>LogIn</button>
                         </Link>
