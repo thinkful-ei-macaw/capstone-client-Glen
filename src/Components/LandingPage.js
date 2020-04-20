@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import NoteContext from '../NoteContext'
+import EmployeeContext from '../EmployeeContext'
 import '../Styles/LandingPage.css'
 
 export default class LandingPage extends Component {
 
-    static contextType = NoteContext
+    static contextType = EmployeeContext
 
     render() {
         console.log(this.context.users.username)

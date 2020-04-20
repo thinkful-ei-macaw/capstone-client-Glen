@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 // import { Route, Redirect } from 'react-router-dom'
 import TokenService from '../../src/Services/token-service'
-import NoteContext from '../NoteContext';
+import EmployeeContext from '../EmployeeContext';
 
 export default class MainPage extends Component {
 
-    static contextType = NoteContext
+    static contextType = EmployeeContext
 
     handleLogoutClick = () => {
         TokenService.clearAuthToken()
@@ -26,7 +26,7 @@ export default class MainPage extends Component {
                     </nav>
 
 
-                    <section class="welcome">
+                    <section className="welcome">
 
                         <h1>Welcome (Username)</h1>
                         <h2>Please select from the options below</h2>

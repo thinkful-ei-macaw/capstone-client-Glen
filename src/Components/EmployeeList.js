@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import NoteContext from '../NoteContext'
+import EmployeeContext from '../EmployeeContext'
 import { Link } from 'react-router-dom'
 import '../Styles/EmployeeList.css'
 
 export default class EmployeeList extends Component {
-    static contextType = NoteContext
+    static contextType = EmployeeContext
 
     render() {
 
@@ -20,7 +20,6 @@ export default class EmployeeList extends Component {
                 <ul>
 
                     {this.context.employees.map(employee => {
-                        console.log(this.context.careers.id)
                         return (
                             <li key={employee.id}>
                                 <p>First Name: {employee.first_name}</p>

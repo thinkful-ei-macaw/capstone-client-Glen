@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import api_config from './api.config';
 import CareerList from './Components/CareerList';
-import NoteContext from './NoteContext';
+import EmployeeContext from './EmployeeContext';
 import { Route } from 'react-router-dom';
 import PrivateRoute from './Components/Utils/PrivateRoute';
-import PublicOnlyRoute from './Components/Utils/PublicOnlyRoute';
 import LoginPage from '../src/Routes/LoginPage/LoginPage';
 import EmployeeList from './Components/EmployeeList';
 import LandingPage from './Components/LandingPage';
@@ -68,7 +67,6 @@ export default class App extends Component {
 
 
   render() {
-
     const contextValue = {
       employees: this.state.employees,
       careers: this.state.careers,
@@ -77,10 +75,9 @@ export default class App extends Component {
 
     return (
       <div className="AppHome">
-        <NoteContext.Provider value={contextValue}>
+        <EmployeeContext.Provider value={contextValue}>
 
           <Route exact path='/' component={LandingPage} />
-          <Route exact path='/career_list' component={CareerList} />
           <Route path='/career_list/:career_id' component={CareerList} />
           <Route exact path='/employee_list' component={EmployeeList} />
           <Route path='/employee_list/:id' component={EmployeeList} />
@@ -95,7 +92,7 @@ export default class App extends Component {
           <Route path='/profile_success' component={ProfileSuccess} />
           <Route path='/update_employee' component={UpdateEmployee} />
           <Route path='/update_success' component={UpdateSuccess} />
-        </NoteContext.Provider>
+        </EmployeeContext.Provider>
       </div>
     )
   }

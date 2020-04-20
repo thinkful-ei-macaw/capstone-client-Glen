@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import NoteContext from '../NoteContext'
+import EmployeeContext from '../EmployeeContext'
+import ValidationError from '../Components/ValidationError/ValidationError'
 import { Link } from 'react-router-dom'
+import api_config from '../api.config';
 
 export default class CreateEmployee extends Component {
 
@@ -15,8 +17,9 @@ export default class CreateEmployee extends Component {
             state: '',
             zip_code: '',
             phone: '',
-            career_id: '',
-            user_id: ''
+            career_id: 'default',
+            user_id: 'default',
+            valid: false
         }
     }
 
@@ -24,6 +27,7 @@ export default class CreateEmployee extends Component {
         const currentCareer = this.props.careers.find(
             career => career.position === careerName
         )
+        console.log(currentCareer.id)
         return currentCareer.id
     }
 
@@ -46,59 +50,152 @@ export default class CreateEmployee extends Component {
         const careerId = this.getCareerId(this.state.career_id);
         const userId = this.getUserId(this.state.user_id)
 
-        // const employee = {
-        //     first
-        // }
+        const employee = {
+            first_name: firstName,
+            last_name: lastName,
+            address: address,
+            city: city,
+            state: state,
+            zip_code: zipCode,
+            phone: phone,
+            career_id: careerId,
+            user_id: userId,
+        };
+
+        console.log(this.employee)
+
+
+        fetch(api_config.employees, {
+            method: 'POST',
+            body: JSON.stringify(employee),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+            .then(res => {
+                if (!res.ok) {
+                    return res.json().then(error => {
+                        throw error;
+                    });
+                }
+                return res.json();
+            })
+            .then(data => {
+                this.props.onAddEmployee(data);
+                this.props.history.goBack();
+
+            })
+            .catch(error => {
+                this.setState({
+                    error
+                })
+            });
+
+    };
+
+    validateFirstName() {
+        const firstName = this.state.first_name;
+        if (firstName.length === 0) {
+            return 'First name is required!'
+        }
     }
 
 
 
 
-    static contextType = NoteContext;
+    static contextType = EmployeeContext;
 
     render() {
+        console.log(this.state.career_id)
+        console.log(this.state.user_id)
+        console.log(this.context.employees)
+
         return (
             <div>
                 <main>
-                    <section class="employee-data">
-                        <form>
-                            <h2>Create New Employee Profile</h2>
+                    <section className="employee-info">
+                        <h2>Create New Employee Profile</h2>
+                        <form className="employee-input" onSubmit={e => this.handleSubmit(e)}>
                             <div>
-                                <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" value="Dunder" />
+                                <label htmlFor="first-name">First Name</label>
+                                <input type="text"
+                                    name="first-name"
+                                    id="first-name"
+                                    onChange={e => this.setState({ first_name: e.target.value, valid: true })}
+                                />
+                                {this.state.valid && (
+                                    <ValidationError message={this.validateFirstName()} />
+                                )}
                             </div>
                             <div>
-                                <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" value="Mifflin" />
+                                <label htmlFor="last-name">Last Name</label>
+                                <input type="text"
+                                    id="last-name"
+                                    onChange={e => this.setState({ last_name: e.target.value })} />
                             </div>
                             <div>
-                                <label for="address">Address</label>
-                                <input type="text" id="address" value="Address: 123 someplace rd." />
+                                <label htmlFor="address">Address</label>
+                                <input type="text"
+                                    id="address"
+                                    onChange={e => this.setState({ address: e.target.value })} />
                             </div>
                             <div>
-                                <label for="city">City</label>
-                                <input type="text" id="city" value="Las Vegas" />
+                                <label htmlFor="city">City</label>
+                                <input type="text"
+                                    id="city"
+                                    onChange={e => this.setState({ city: e.target.value })} />
                             </div>
                             <div>
-                                <label for="state">State</label>
-                                <input type="text" id="state" value="NV" />
+                                <label htmlFor="state">State</label>
+                                <input type="text"
+                                    id="state"
+                                    onChange={e => this.setState({ state: e.target.value })} />
                             </div>
                             <div>
-                                <label for="zipcode">ZipCode</label>
-                                <input type="text" id="zipcode" value="89512" />
+                                <label htmlFor="zipcode">ZipCode</label>
+                                <input type="text"
+                                    id="zipcode"
+                                    onChange={e => this.setState({ zip_code: e.target.value })} />
                             </div>
                             <div>
-                                <label for="phone">ZipCode</label>
-                                <input type="text" id="phone" value=" 702-123-4567" />
+                                <label htmlFor="phone">Phone</label>
+                                <input type="text"
+                                    id="phone"
+                                    onChange={e => this.setState({ phone: e.target.value })} />
                             </div>
                             <div>
-                                <select name="careers">
-                                    {this.context.careers.map(career => <option value={career.id}>{career.position}</option>)}
+                                <select htmlFor="careers"
+                                    onChange={e => this.setState({ career_id: e.target.value })}>
+                                    <option value='default'>Select a Career...</option>
+                                    {this.props.careers.map(career =>
+                                        <option value={career.position} key={career.id}>
+                                            {career.position}
+                                        </option>)}
                                 </select>
                             </div>
-                            <Link to='/profile_success'>
-                                <button type="submit">Create Profile</button>
-                            </Link>
+                            <div>
+                                <select htmlFor="users"
+                                    onChange={e => this.setState({ user_id: e.target.value })}>
+                                    <option value='default'>Select a Manager...</option>
+                                    {this.props.users.map(user =>
+                                        <option value={user.username} key={user.id}>
+                                            {user.username}
+                                        </option>)}
+                                </select>
+                            </div>
+                            <input type="submit"
+                                disabled={
+                                    !this.state.first_name ||
+                                    !this.state.last_name ||
+                                    !this.state.address ||
+                                    !this.state.city ||
+                                    !this.state.state ||
+                                    !this.state.zip_code ||
+                                    !this.state.phone ||
+                                    this.state.career_id === 'default' ||
+                                    this.state.user_id === 'default'
+                                } />
+
                             <Link to='/main_page'>
                                 <button type="button">Return to Main Page</button>
                             </Link>
@@ -107,7 +204,7 @@ export default class CreateEmployee extends Component {
 
                 </main>
 
-            </div>
+            </div >
         )
     }
 }
