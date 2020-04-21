@@ -6,6 +6,7 @@ import api_config from '../api.config';
 
 export default class CreateEmployee extends Component {
 
+    static contextType = EmployeeContext;
 
     constructor(props) {
         super(props);
@@ -19,20 +20,19 @@ export default class CreateEmployee extends Component {
             phone: '',
             career_id: 'default',
             user_id: 'default',
-            valid: false
+
         }
     }
 
     getCareerId = (careerName) => {
-        const currentCareer = this.props.careers.find(
+        const currentCareer = this.context.careers.find(
             career => career.position === careerName
         )
-        console.log(currentCareer.id)
         return currentCareer.id
     }
 
     getUserId = (userName) => {
-        const currentUser = this.props.users.find(
+        const currentUser = this.context.users.find(
             user => user.username === userName
         )
         return currentUser.id
@@ -62,8 +62,6 @@ export default class CreateEmployee extends Component {
             user_id: userId,
         };
 
-        console.log(this.employee)
-
 
         fetch(api_config.employees, {
             method: 'POST',
@@ -81,7 +79,8 @@ export default class CreateEmployee extends Component {
                 return res.json();
             })
             .then(data => {
-                this.props.onAddEmployee(data);
+                this.context.onAddEmployee(data);
+                console.log(this.context.onAddEmployee)
                 this.props.history.goBack();
 
             })
@@ -101,15 +100,8 @@ export default class CreateEmployee extends Component {
     }
 
 
-
-
-    static contextType = EmployeeContext;
-
     render() {
-        console.log(this.state.career_id)
-        console.log(this.state.user_id)
-        console.log(this.context.employees)
-
+        console.log(this.props)
         return (
             <div>
                 <main>
@@ -167,7 +159,7 @@ export default class CreateEmployee extends Component {
                                 <select htmlFor="careers"
                                     onChange={e => this.setState({ career_id: e.target.value })}>
                                     <option value='default'>Select a Career...</option>
-                                    {this.props.careers.map(career =>
+                                    {this.context.careers.map(career =>
                                         <option value={career.position} key={career.id}>
                                             {career.position}
                                         </option>)}
@@ -177,7 +169,7 @@ export default class CreateEmployee extends Component {
                                 <select htmlFor="users"
                                     onChange={e => this.setState({ user_id: e.target.value })}>
                                     <option value='default'>Select a Manager...</option>
-                                    {this.props.users.map(user =>
+                                    {this.context.users.map(user =>
                                         <option value={user.username} key={user.id}>
                                             {user.username}
                                         </option>)}
@@ -195,7 +187,6 @@ export default class CreateEmployee extends Component {
                                     this.state.career_id === 'default' ||
                                     this.state.user_id === 'default'
                                 } />
-
                             <Link to='/main_page'>
                                 <button type="button">Return to Main Page</button>
                             </Link>

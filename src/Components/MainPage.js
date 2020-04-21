@@ -14,7 +14,6 @@ export default class MainPage extends Component {
 
 
     render() {
-        console.log(this.context.users.username)
         return (
             <div>
                 <main>
@@ -45,13 +44,15 @@ export default class MainPage extends Component {
                     </section>
                     <section>
                         <h3>Update employee profile</h3>
-                        <Link to='/update_employee'>
+                        <Link to='/update_search'>
                             <button type="button">Update profile</button>
                         </Link>
                     </section>
                     <section>
                         <h3>Delete employee profile</h3>
-                        <button type="button">Delete profile</button>
+                        <Link to="/delete_search/:employee_id">
+                            <button type="button">Delete profile</button>
+                        </Link>
                     </section>
                 </main>
                 <footer>DataTech for a better tommorow</footer>

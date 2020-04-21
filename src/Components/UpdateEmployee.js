@@ -1,8 +1,40 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import EmployeeContext from '../EmployeeContext'
+
+
+
 
 export default class UpdateEmployee extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            first_name: '',
+            last_name: '',
+            address: '',
+            city: '',
+            state: '',
+            zip_code: '',
+            phone: '',
+            career_id: 'default',
+            user_id: 'default',
+
+        }
+    }
+
+    static contextType = EmployeeContext
+
+
+    //Always a string from match.params
+
     render() {
+        let employees = this.context.employees || []
+        let employee = employees.find(employee => {
+            return employee.id == this.props.match.params.employee_id
+        }) || { first_name: 'loading' }
+
+        console.log(employee)
         return (
 
             <div>
@@ -12,38 +44,35 @@ export default class UpdateEmployee extends Component {
                             <h2>Update Employee Profile</h2>
                             <div>
                                 <label for="first-name">First Name</label>
-                                <input type="text" id="first-name" value="Dunder" />
+                                <input type="text" id="first-name" value={employee.first_name} />
                             </div>
                             <div>
                                 <label for="last-name">Last Name</label>
-                                <input type="text" id="last-name" value="Mifflin" />
+                                <input type="text" id="last-name" value={employee.last_name} />
                             </div>
                             <div>
                                 <label for="address">Address</label>
-                                <input type="text" id="address" value="Address: 123 someplace rd." />
+                                <input type="text" id="address" value={employee.address} />
                             </div>
                             <div>
                                 <label for="city">City</label>
-                                <input type="text" id="city" value="Las Vegas" />
+                                <input type="text" id="city" value={employee.city} />
                             </div>
                             <div>
                                 <label for="state">State</label>
-                                <input type="text" id="state" value="NV" />
+                                <input type="text" id="state" value={employee.state} />
                             </div>
                             <div>
                                 <label for="zipcode">ZipCode</label>
-                                <input type="text" id="zipcode" value="89512" />
+                                <input type="text" id="zipcode" value={employee.zip_code} />
                             </div>
                             <div>
                                 <label for="phone">Phone</label>
-                                <input type="text" id="phone" value=" 702-123-4567" />
+                                <input type="text" id="phone" value={employee.phone} />
                             </div>
                             <div>
                                 <select>
-                                    <option value="Select_Career_Field">-Select Career Field-</option>
-                                    <option value="Full_Stack_Developer">Full Stack Developer</option>
-                                    <option value="Back_End_Developer">Back End Developer</option>
-                                    <option value="Front_End_Developer">Front End Developer</option>
+                                    <option value={employee.career_id}>Current:{employee.career_id}</option>
                                 </select>
                             </div>
                             <Link to='/update_success'>
