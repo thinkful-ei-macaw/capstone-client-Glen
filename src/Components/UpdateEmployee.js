@@ -83,10 +83,6 @@ export default class UpdateEmployee extends Component {
 
 
 
-
-    // fetch(`${api_config.employees}/${id}`)
-
-
     static contextType = EmployeeContext
 
 
