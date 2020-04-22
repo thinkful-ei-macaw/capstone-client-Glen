@@ -81,7 +81,7 @@ export default class CreateEmployee extends Component {
             .then(data => {
                 this.context.onAddEmployee(data);
                 console.log(this.context.onAddEmployee)
-                this.props.history.goBack();
+                this.props.history.push('/create_success');
 
             })
             .catch(error => {
@@ -101,6 +101,8 @@ export default class CreateEmployee extends Component {
 
 
     render() {
+
+
         console.log(this.props)
         return (
             <div>
@@ -113,7 +115,7 @@ export default class CreateEmployee extends Component {
                                 <input type="text"
                                     name="first-name"
                                     id="first-name"
-                                    onChange={e => this.setState({ first_name: e.target.value, valid: true })}
+                                    onChange={e => this.setState({ first_name: e.target.value })}
                                 />
                                 {this.state.valid && (
                                     <ValidationError message={this.validateFirstName()} />
@@ -187,6 +189,7 @@ export default class CreateEmployee extends Component {
                                     this.state.career_id === 'default' ||
                                     this.state.user_id === 'default'
                                 } />
+
                             <Link to='/main_page'>
                                 <button type="button">Return to Main Page</button>
                             </Link>

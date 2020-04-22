@@ -65,13 +65,20 @@ export default class App extends Component {
 
   }
 
+  updateEmployee = (employee) => {
+    this.setState({
+      employees: [...this.state.employees, employee]
+    })
+  }
+
 
   render() {
     const contextValue = {
       employees: this.state.employees,
       careers: this.state.careers,
       users: this.state.users,
-      onAddEmployee: this.addEmployee
+      onAddEmployee: this.addEmployee,
+      onUpdateEmployee: this.updateEmployee
     }
 
     return (

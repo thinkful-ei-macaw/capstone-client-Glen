@@ -19,9 +19,7 @@ export default class MainPage extends Component {
                 <main>
                     <nav>
                         <span>Data Tech Systems</span>
-                        <Link to='/'>
-                            <button type="button" onClick={this.handleLogoutClick}>Log Out</button>
-                        </Link>
+                        <button type="button" onClick={this.handleLogoutClick}>Log Out</button>
                     </nav>
 
 
