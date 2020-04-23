@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import EmployeeContext from '../EmployeeContext'
+import '../Styles/CareerList.css'
 
 export default class CareerList extends Component {
     static contextType = EmployeeContext;
@@ -14,12 +15,12 @@ export default class CareerList extends Component {
         const currentCareerId = this.props.match.params.career_id;
         const careerIdResults = this.findCareerId(careers, currentCareerId);
         return (
-            <div>
-                <main>
+            <div id="career-display-form">
+                <main id="career-display">
                     <header>
                         <nav>
                             <Link to='/employee_list'>
-                                <button type='button'>Return to Employee Roster</button>
+                                <button id="return-roster-btn" type='button'>Return to Employee Roster</button>
                             </Link>
                         </nav>
                     </header>

@@ -1,0 +1,57 @@
+@media screen and (min-width: 300px){
+
+    #delete-search-fields {
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 1em;
+        margin-bottom: 1em;
+        margin-top: 1.5em;
+        padding: 1em 0 1em 0;
+        background-color: white;
+        color: black;
+        max-width: 90%;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #delete-employee-title {
+        color: white;
+        text-align: center;
+    }
+
+    #delete-employee-btn {
+        color: white;
+        background-color: black;
+        border: 1px solid white;
+        padding: .5em;
+        border-radius: 5px;
+    }
+
+    #delete-employee-btn:hover {
+        cursor: pointer;
+        color: orange;
+    }
+
+    #delete-search-input {
+        width: 15em;
+        padding: .3em;
+    }
+
+    #delete-employee-search {
+        text-align: center;
+    }
+
+    #delete-return-main {
+        padding: .5em;
+        border-radius: 5px;
+        margin-left: 3em;
+    }
+
+    #delete-return-main:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+}

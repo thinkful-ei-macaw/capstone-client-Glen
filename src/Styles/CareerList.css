@@ -1,7 +1,9 @@
 @media screen and (min-width: 300px) {
     
 
-    #landing-page-form {
+    #career-display{
+       
+       
         text-align: center;
         border: 1px solid black;
         border-radius: 1em;
@@ -17,15 +19,18 @@
         margin-right: auto;
       }
 
-    #landing-login-btn {
-      padding: .7em;
-     border-radius: 5px;
-     font-size: 1em;
-    }
+      #career-display-form {
+          margin-top: 7em;
+      }
 
-    #landing-login-btn:hover {
-      cursor: pointer;
-      color: red;
-    }
+      #return-roster-btn {
+        padding: .5em;
+     border-radius: 5px;
+      }
+
+      #return-roster-btn:hover {
+          cursor: pointer;
+          color: red;
+      }
   
 }

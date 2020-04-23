@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import api_config from '../../api.config'
+import { Link } from 'react-router-dom'
+import '../../Styles/Delete.css'
 
 export default class DeleteEmployee extends Component {
     state = {
@@ -22,6 +24,7 @@ export default class DeleteEmployee extends Component {
             })
             .then(res => {
                 res.json();
+                this.props.history.push('/delete_success')
             })
             .catch(error => {
                 this.setState({ error })
@@ -53,7 +56,7 @@ export default class DeleteEmployee extends Component {
 
     render() {
 
-
+        console.log(this.props)
         let employees = [];
 
         let currentEmployee = this.state.employeeList;
@@ -74,24 +77,33 @@ export default class DeleteEmployee extends Component {
             employees = newEmployee.map(employee => {
 
                 return (
-                    <li key={employee.id}>
-                        <p>First Name: {employee.first_name}</p>
-                        <p>Last Name: {employee.last_name}</p>
-                        <p>Address: {employee.address}</p>
-                        <p>City: {employee.city}</p>
-                        <p>State: {employee.state}</p>
-                        <p>Zip Code: {employee.zip_code}</p>
-                        <p>Phone: {employee.phone}</p>
-                        <button onClick={() => this.handleDeleteEmployee(employee.id)}>Delete</button>
-                    </li>
+                    <div>
+                        <main id="delete-search-fields">
+                            <ul>
+                                <li key={employee.id}>
+                                    <p>First Name: {employee.first_name}</p>
+                                    <p>Last Name: {employee.last_name}</p>
+                                    <p>Address: {employee.address}</p>
+                                    <p>City: {employee.city}</p>
+                                    <p>State: {employee.state}</p>
+                                    <p>Zip Code: {employee.zip_code}</p>
+                                    <p>Phone: {employee.phone}</p>
+                                    <button id="delete-employee-btn" onClick={() => this.handleDeleteEmployee(employee.id)}>Delete Employee</button>
+                                </li>
+                            </ul>
+                        </main>
+                    </div>
                 )
             })
         }
         return (
             <div>
-                <h1>Search Employee to Delete</h1>
-                <div>
-                    <input type="text" className="searchBar" onChange={this.handleChange} placeholder="Search Employees" />
+                <h2 id="delete-employee-title">Search Employee to Delete</h2>
+                <div id="delete-employee-search" >
+                    <input id="delete-search-input" type="text" className="searchBar" onChange={this.handleChange} placeholder="Search by First or Last name" />
+                    <Link to="/main_page">
+                        <button id="delete-return-main" type="button">Return to Main</button>
+                    </Link>
                 </div>
                 {employees}
 

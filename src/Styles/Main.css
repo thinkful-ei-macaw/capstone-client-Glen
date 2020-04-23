@@ -1,0 +1,58 @@
+@media screen and (min-width: 300px) {
+
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: black;
+    }
+
+
+  
+    .main-logout {
+        margin-left: 1em;
+        padding: .5em;
+        border-radius: 5px;
+
+
+    }
+
+
+    .main-logout:hover {
+        cursor: pointer;
+        color: red;
+    }
+
+    .route-btn {
+    color: white;
+     background-color: black;
+     border: 1px solid white;
+     padding: .5em;
+     border-radius: 5px;
+    }
+
+    .route-btn:hover {
+        cursor: pointer;
+        color:orange;
+    }
+
+  
+        #main-page-format {
+        border: 1px solid black;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: center;
+        margin-top: 5em;
+        margin-bottom: 1em;
+        border-radius: 1em;
+        color: black;
+        background-color: white;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        }
+      
+    
+  
+}

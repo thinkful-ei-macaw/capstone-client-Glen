@@ -12,7 +12,7 @@ export default class LandingPage extends Component {
         return (
             <div>
 
-                <main>
+                <main id="landing-page-form">
                     <header className="header-section">
                         <div className="header-div">
                             <h1>Welcome to DataTech</h1>
@@ -21,7 +21,6 @@ export default class LandingPage extends Component {
                     </header>
 
                     <section>
-                        <p>This is user {this.context.users.username}</p>
                         <header>
                             <h2>Built for Managers like you</h2>
                         </header>
@@ -53,7 +52,7 @@ export default class LandingPage extends Component {
                             <h3>Remove employee records</h3>
                         </header>
                         <p>Someone no longer working for you?</p>
-                        <p>No problem! You can easily remove their info in a single click</p>
+                        <p>No problem! You can easily remove their info in a single click and get it handled!</p>
                     </section>
 
                     <section>
@@ -61,7 +60,7 @@ export default class LandingPage extends Component {
                             <h3>Log into your account</h3>
                         </header>
                         <Link to='/login'>
-                            <button className='log_in_btn'>LogIn</button>
+                            <button id="landing-login-btn" className='log_in_btn'>LogIn</button>
                         </Link>
                     </section>
                 </main>

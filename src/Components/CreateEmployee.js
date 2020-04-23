@@ -3,6 +3,7 @@ import EmployeeContext from '../EmployeeContext'
 import ValidationError from '../Components/ValidationError/ValidationError'
 import { Link } from 'react-router-dom'
 import api_config from '../api.config';
+import '../Styles/CreateEmployee.css'
 
 export default class CreateEmployee extends Component {
 
@@ -106,11 +107,11 @@ export default class CreateEmployee extends Component {
         console.log(this.props)
         return (
             <div>
-                <main>
+                <main id="create-employee-form">
                     <section className="employee-info">
-                        <h2>Create New Employee Profile</h2>
+                        <h2 className="create-title">Create New Employee Profile</h2>
                         <form className="employee-input" onSubmit={e => this.handleSubmit(e)}>
-                            <div>
+                            <div className="create-employee-fields">
                                 <label htmlFor="first-name">First Name</label>
                                 <input type="text"
                                     name="first-name"
@@ -120,44 +121,45 @@ export default class CreateEmployee extends Component {
                                 {this.state.valid && (
                                     <ValidationError message={this.validateFirstName()} />
                                 )}
-                            </div>
-                            <div>
+                                <br />
+
                                 <label htmlFor="last-name">Last Name</label>
                                 <input type="text"
                                     id="last-name"
                                     onChange={e => this.setState({ last_name: e.target.value })} />
-                            </div>
-                            <div>
+                                <br />
+
                                 <label htmlFor="address">Address</label>
                                 <input type="text"
                                     id="address"
                                     onChange={e => this.setState({ address: e.target.value })} />
-                            </div>
-                            <div>
+                                <br />
+
                                 <label htmlFor="city">City</label>
                                 <input type="text"
                                     id="city"
                                     onChange={e => this.setState({ city: e.target.value })} />
-                            </div>
-                            <div>
+                                <br />
+
                                 <label htmlFor="state">State</label>
                                 <input type="text"
                                     id="state"
                                     onChange={e => this.setState({ state: e.target.value })} />
-                            </div>
-                            <div>
+                                <br />
+
                                 <label htmlFor="zipcode">ZipCode</label>
                                 <input type="text"
                                     id="zipcode"
                                     onChange={e => this.setState({ zip_code: e.target.value })} />
-                            </div>
-                            <div>
+                                <br />
+
                                 <label htmlFor="phone">Phone</label>
                                 <input type="text"
                                     id="phone"
                                     onChange={e => this.setState({ phone: e.target.value })} />
-                            </div>
-                            <div>
+                                <br />
+
+
                                 <select htmlFor="careers"
                                     onChange={e => this.setState({ career_id: e.target.value })}>
                                     <option value='default'>Select a Career...</option>
@@ -166,8 +168,8 @@ export default class CreateEmployee extends Component {
                                             {career.position}
                                         </option>)}
                                 </select>
-                            </div>
-                            <div>
+                                <br />
+
                                 <select htmlFor="users"
                                     onChange={e => this.setState({ user_id: e.target.value })}>
                                     <option value='default'>Select a Manager...</option>
@@ -176,23 +178,26 @@ export default class CreateEmployee extends Component {
                                             {user.username}
                                         </option>)}
                                 </select>
+                                <br />
+                                <input id="submit-btn" type="submit"
+                                    disabled={
+                                        !this.state.first_name ||
+                                        !this.state.last_name ||
+                                        !this.state.address ||
+                                        !this.state.city ||
+                                        !this.state.state ||
+                                        !this.state.zip_code ||
+                                        !this.state.phone ||
+                                        this.state.career_id === 'default' ||
+                                        this.state.user_id === 'default'
+                                    } />
+                                <br />
+                                <Link to='/main_page'>
+                                    <div id="return-main">
+                                        <button id="go-back-main" type="button">Return to Main Page</button>
+                                    </div>
+                                </Link>
                             </div>
-                            <input type="submit"
-                                disabled={
-                                    !this.state.first_name ||
-                                    !this.state.last_name ||
-                                    !this.state.address ||
-                                    !this.state.city ||
-                                    !this.state.state ||
-                                    !this.state.zip_code ||
-                                    !this.state.phone ||
-                                    this.state.career_id === 'default' ||
-                                    this.state.user_id === 'default'
-                                } />
-
-                            <Link to='/main_page'>
-                                <button type="button">Return to Main Page</button>
-                            </Link>
                         </form>
                     </section>
 

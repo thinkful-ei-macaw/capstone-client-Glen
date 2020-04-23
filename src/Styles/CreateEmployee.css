@@ -1,0 +1,80 @@
+@media screen and (min-width: 300px){
+
+
+    #create-employee-form {
+
+        text-align: left;
+        border: 1px solid black;
+        border-radius: 1em;
+        margin-bottom: 1em;
+        margin-top: 1.5em;
+        padding: 1em 0 1em 0;
+        background-color: white;
+        color: black;
+        max-width: 90%;
+        padding-left: 1em;
+        padding-right: 1em;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+    #go-back-main {
+    
+     padding: .5em;
+     border-radius: 5px;
+
+    }
+
+    #go-back-main:hover{
+        cursor: pointer;
+        color: red;
+    }
+
+    #return-main {
+
+        margin-left: 7.75em;
+        margin-top: 1em;
+            
+    }
+
+    #submit-btn {
+
+     padding: .5em;
+     border-radius: 5px;
+
+    }
+
+    #submit-btn:hover {
+        cursor: pointer;
+    }
+
+    .create-employee-fields input {
+
+        margin-left: 10em;
+        margin-bottom: 1em;
+        
+    }
+
+    .create-employee-fields select {
+        
+        margin-left: 10em;
+        margin-bottom: .5em;
+
+    }
+
+    
+    .create-employee-fields label {
+        position: absolute;
+        margin-left: 1em;
+    }
+
+
+    .create-title {
+        text-align: center;
+    }
+
+   
+
+}
+

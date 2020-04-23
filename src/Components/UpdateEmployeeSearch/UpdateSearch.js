@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import api_config from '../../api.config';
 import { Link } from 'react-router-dom';
+import '../../Styles/UpdateSearch.css'
 
 export default class UpdateSearch extends Component {
 
@@ -54,27 +55,35 @@ export default class UpdateSearch extends Component {
 
                 return (
                     <div>
-                        <li key={employee.id}>
-                            <p>First Name: {employee.first_name}</p>
-                            <p>Last Name: {employee.last_name}</p>
-                            <p>Address: {employee.address}</p>
-                            <p>City: {employee.city}</p>
-                            <p>State: {employee.state}</p>
-                            <p>Zip Code: {employee.zip_code}</p>
-                            <p>Phone: {employee.phone}</p>
-                            <p>Employee Id: {employee.id}</p>
-                            <Link to={`/update_employee/${employee.id}`}>
-                                <button type="button">Update Employee</button>
-                            </Link>
-                        </li>
+                        <main id="update-search-fields">
+                            <ul>
+                                <li key={employee.id}>
+                                    <p>First Name: {employee.first_name}</p>
+                                    <p>Last Name: {employee.last_name}</p>
+                                    <p>Address: {employee.address}</p>
+                                    <p>City: {employee.city}</p>
+                                    <p>State: {employee.state}</p>
+                                    <p>Zip Code: {employee.zip_code}</p>
+                                    <p>Phone: {employee.phone}</p>
+
+                                    <Link to={`/update_employee/${employee.id}`}>
+                                        <button id="update-employee-btn" type="button">Update Employee</button>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </main>
                     </div>
                 )
             })
         }
         return (
             <div>
-                <div>
-                    <input type="text" className="searchBar" onChange={this.handleChange} placeholder="Search Employees" />
+                <div id="update-employee-search">
+                    <h2 id="employee-update-title">Search Employee to Update</h2>
+                    <input id="employee-search-input" type="text" onChange={this.handleChange} placeholder="Search by First or Last name" />
+                    <Link to="/main_page">
+                        <button id="update-return-main" type="button">Return to Main</button>
+                    </Link>
                 </div>
                 {employees}
             </div>

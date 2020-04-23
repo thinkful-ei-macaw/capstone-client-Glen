@@ -10,33 +10,41 @@ export default class EmployeeList extends Component {
 
         return (
             <div>
-                <header>
-                    <nav>
-                        <Link to='/main_page'>
-                            <button type="button">Return to Main</button>
-                        </Link>
-                    </nav>
-                </header>
-                <ul>
+                <main className="employee-list-main">
+                    <header>
+                        <div className="employee-list-title">
+                            <h1>Current Employee Roster</h1>
+                        </div>
+                    </header>
+                    <ul>
 
-                    {this.context.employees.map(employee => {
-                        return (
-                            <li key={employee.id}>
-                                <p>First Name: {employee.first_name}</p>
-                                <p>Last Name: {employee.last_name}</p>
-                                <p>Address: {employee.address}</p>
-                                <p>City: {employee.city}</p>
-                                <p>State: {employee.state}</p>
-                                <p>Zip Code: {employee.zip_code}</p>
-                                <p>Phone: {employee.phone}</p>
-                                <Link to={`/career_list/${employee.career_id}`}>
-                                    <button type="button">View Career employee</button>
-                                </Link>
-                            </li>
+                        {this.context.employees.map(employee => {
+                            return (
+                                <li className="employee-component" key={employee.id}>
+                                    <p>First Name: {employee.first_name}</p>
+                                    <p>Last Name: {employee.last_name}</p>
+                                    <p>Address: {employee.address}</p>
+                                    <p>City: {employee.city}</p>
+                                    <p>State: {employee.state}</p>
+                                    <p>Zip Code: {employee.zip_code}</p>
+                                    <p>Phone: {employee.phone}</p>
 
-                        )
-                    })}
-                </ul>
+
+                                    <Link to={`/career_list/${employee.career_id}`}>
+                                        <button id="view-career-btn" type="button">View Employee Career</button>
+                                    </Link>
+                                    <br></br>
+                                    <Link to={`/main_page`}>
+                                        <button id="main-return-btn">Return to Main</button>
+                                    </Link>
+
+
+                                </li>
+
+                            )
+                        })}
+                    </ul>
+                </main>
             </div>
         )
     }
