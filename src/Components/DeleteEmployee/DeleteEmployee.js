@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import api_config from '../../api.config'
+import EmployeeContext from '../../EmployeeContext'
 import { Link } from 'react-router-dom'
 import '../../Styles/Delete.css'
 
@@ -9,6 +10,9 @@ export default class DeleteEmployee extends Component {
         filter: ''
     }
 
+    //Need to execute context function before you redirect
+
+    static contextType = EmployeeContext
 
     handleDeleteEmployee = (id) => {
         fetch(`${api_config.employees}/${id}`, {
@@ -23,9 +27,7 @@ export default class DeleteEmployee extends Component {
                 return res.json();
             })
             .then(res => {
-                this.setState({
-
-                })
+                this.context.onDeleteEmployee(res)
                 this.props.history.push('/delete_success')
             })
             .catch(error => {
@@ -58,9 +60,8 @@ export default class DeleteEmployee extends Component {
 
     render() {
 
-
         let employees = [];
-
+        console.log(this.context)
         let currentEmployee = this.state.employeeList;
 
         let newEmployee = currentEmployee.filter(input => {

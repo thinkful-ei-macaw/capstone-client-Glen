@@ -81,6 +81,18 @@ export default class App extends Component {
 
   }
 
+  ondDeleteEmployee = (employee) => {
+    let deleteEmployee = [...this.state.employees]
+    let oldId = deleteEmployee.filter(old => {
+      return old.id !== employee.id
+    })
+    this.setState({
+      employees: oldId
+    })
+
+
+  }
+
   updateEmployee = (employee) => {
     let newUpdateEmployee = [...this.state.employees]
     let oldIndex = newUpdateEmployee.findIndex(oldemployee => {
@@ -101,7 +113,8 @@ export default class App extends Component {
       careers: this.state.careers,
       users: this.state.users,
       onAddEmployee: this.addEmployee,
-      onUpdateEmployee: this.updateEmployee
+      onUpdateEmployee: this.updateEmployee,
+      ondDeleteEmployee: this.ondDeleteEmployee
     }
 
     return (
