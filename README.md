@@ -1,6 +1,8 @@
 
 # Mobile employee management App 
 
+[LIVE VERSION](https://management-app-employee-database.now.sh/)
+
 A simple employee managment app with a minimalist design.
 Used for storing, updating, and deleting an employee roster. 
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-// import { Route, Redirect } from 'react-router-dom'
 import TokenService from '../../src/Services/token-service'
 import EmployeeContext from '../EmployeeContext';
 import '../Styles/Main.css'
@@ -24,7 +23,10 @@ export default class MainPage extends Component {
                 <main id="main-page-format">
                     <nav>
                         <span>Data Tech Systems</span>
-                        <button className="main-logout" type="button" onClick={this.handleLogoutClick}>Log Out</button>
+
+                        <Link to='/'>
+                            <button className="main-logout" type="button" onClick={this.handleLogoutClick}>Log Out</button>
+                        </Link>
                     </nav>
 
 
@@ -58,7 +60,7 @@ export default class MainPage extends Component {
                         </Link>
                     </section>
                 </main>
-                <footer>DataTech for a better tommorow</footer>
+                <footer>DataTech Employee Management App</footer>
             </div >
         )
     }

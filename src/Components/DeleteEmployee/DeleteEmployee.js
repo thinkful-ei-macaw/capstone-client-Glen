@@ -19,18 +19,20 @@ export default class DeleteEmployee extends Component {
             method: 'DELETE'
         })
             .then((res) => {
+                console.log('Do you see me')
                 if (!res.ok) {
                     return res.json().then(error => {
                         throw error;
                     });
                 }
-                return res.json();
+                return res
             })
-            .then(res => {
-                this.context.onDeleteEmployee(res)
+            .then(() => {
+                this.context.onDeleteEmployee(id)
                 this.props.history.push('/delete_success')
             })
             .catch(error => {
+
                 this.setState({ error })
             })
     };
@@ -61,7 +63,6 @@ export default class DeleteEmployee extends Component {
     render() {
 
         let employees = [];
-        console.log(this.context)
         let currentEmployee = this.state.employeeList;
 
         let newEmployee = currentEmployee.filter(input => {

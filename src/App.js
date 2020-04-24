@@ -81,10 +81,10 @@ export default class App extends Component {
 
   }
 
-  ondDeleteEmployee = (employee) => {
+  onDeleteEmployee = (employee_id) => {
     let deleteEmployee = [...this.state.employees]
     let oldId = deleteEmployee.filter(old => {
-      return old.id !== employee.id
+      return old.id !== employee_id
     })
     this.setState({
       employees: oldId
@@ -114,7 +114,7 @@ export default class App extends Component {
       users: this.state.users,
       onAddEmployee: this.addEmployee,
       onUpdateEmployee: this.updateEmployee,
-      ondDeleteEmployee: this.ondDeleteEmployee
+      onDeleteEmployee: this.onDeleteEmployee
     }
 
     return (
