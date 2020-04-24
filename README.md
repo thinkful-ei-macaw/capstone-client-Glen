@@ -1,15 +1,18 @@
 
-#Mobile employee management App 
+# Mobile employee management App 
 
 A simple employee managment app with a minimalist design.
 Used for storing, updating, and deleting an employee roster. 
 
-#Summary 
+## Summary 
 
 Landing Page explaining app functionality
 
 ![screenshot](./src/repo-images/main.png)
 
+After login, the user is presented with a display of the app functions
+
+![screenshot](./src/repo-images/selections.png)
 
 
 
@@ -30,7 +33,10 @@ Landing Page explaining app functionality
 
 
 
-<!-- This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -97,4 +103,4 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 ### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify -->
+This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
