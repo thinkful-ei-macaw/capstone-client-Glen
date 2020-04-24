@@ -7,7 +7,7 @@ export default class EmployeeList extends Component {
     static contextType = EmployeeContext
 
     render() {
-
+        let employees = this.context.employees || []
         return (
             <div>
                 <main className="employee-list-main">
@@ -18,7 +18,7 @@ export default class EmployeeList extends Component {
                     </header>
                     <ul>
 
-                        {this.context.employees.map(employee => {
+                        {employees.map(employee => {
                             return (
                                 <li className="employee-component" key={employee.id}>
                                     <p>First Name: {employee.first_name}</p>
@@ -35,7 +35,7 @@ export default class EmployeeList extends Component {
                                     </Link>
                                     <br></br>
                                     <Link to={`/main_page`}>
-                                        <button id="main-return-btn">Return to Main</button>
+                                        <button id="main-return-btn">Return to Main Page</button>
                                     </Link>
 
 

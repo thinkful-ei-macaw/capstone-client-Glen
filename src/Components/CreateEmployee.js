@@ -102,9 +102,9 @@ export default class CreateEmployee extends Component {
 
 
     render() {
+        let careers = this.context.careers || []
+        let users = this.context.users || []
 
-
-        console.log(this.props)
         return (
             <div>
                 <main id="create-employee-form">
@@ -163,7 +163,7 @@ export default class CreateEmployee extends Component {
                                 <select htmlFor="careers"
                                     onChange={e => this.setState({ career_id: e.target.value })}>
                                     <option value='default'>Select a Career...</option>
-                                    {this.context.careers.map(career =>
+                                    {careers.map(career =>
                                         <option value={career.position} key={career.id}>
                                             {career.position}
                                         </option>)}
@@ -173,7 +173,7 @@ export default class CreateEmployee extends Component {
                                 <select htmlFor="users"
                                     onChange={e => this.setState({ user_id: e.target.value })}>
                                     <option value='default'>Select a Manager...</option>
-                                    {this.context.users.map(user =>
+                                    {users.map(user =>
                                         <option value={user.username} key={user.id}>
                                             {user.username}
                                         </option>)}

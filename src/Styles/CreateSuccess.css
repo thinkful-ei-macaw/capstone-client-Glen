@@ -5,9 +5,10 @@
     border-radius: 1em;
     background-color:white;
     width: 90%;
-    margin-top: 8em;
+    margin-top: 10em;
     margin-left: auto;
     margin-right: auto;
+    font-size: .7em;
     }
 
     #create-success-info {
@@ -25,4 +26,13 @@
         color: red;
     }
   
+}
+
+@media screen and (min-width:1100px){
+
+    #create-success-main {
+            max-width: 70%;
+            font-size: 1em;
+        }
+
 }

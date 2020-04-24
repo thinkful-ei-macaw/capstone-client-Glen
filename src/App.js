@@ -12,8 +12,10 @@ import LandingPage from './Components/LandingPage';
 import MainPage from './Components/MainPage';
 import CreateEmployee from './Components/CreateEmployee';
 import CreateSuccess from './Components/SuccessPages/CreateSuccess';
-import DeleteEmployee from './Components/DeleteEmployee/DeleteEmployee'
+import DeleteEmployee from './Components/DeleteEmployee/DeleteEmployee';
 import UpdateSuccess from './Components/SuccessPages/UpdateSuccess';
+import DeleteSuccess from './Components/SuccessPages/DeleteSuccess';
+import { BrowserRouter } from 'react-router-dom';
 
 export default class App extends Component {
 
@@ -23,6 +25,7 @@ export default class App extends Component {
       employees: [],
       careers: [],
       users: [],
+      valid: true
 
     }
   }
@@ -58,6 +61,17 @@ export default class App extends Component {
       )
   }
 
+  componentDidUpdate() {
+    console.log(this.state.employees)
+    if (this.state.valid) {
+      this.setState({
+        employees: this.state.employees,
+        valid: false
+      })
+    }
+
+  }
+
 
 
   addEmployee = (employee) => {
@@ -68,13 +82,20 @@ export default class App extends Component {
   }
 
   updateEmployee = (employee) => {
+    let newUpdateEmployee = [...this.state.employees]
+    let oldIndex = newUpdateEmployee.findIndex(oldemployee => {
+      return oldemployee.id === employee.id
+    })
+
+    newUpdateEmployee[oldIndex] = employee
     this.setState({
-      employees: [...this.state.employees, employee]
+      employees: newUpdateEmployee
     })
   }
 
 
   render() {
+    console.log(this.state.employees)
     const contextValue = {
       employees: this.state.employees,
       careers: this.state.careers,
@@ -85,19 +106,22 @@ export default class App extends Component {
 
     return (
       <div className="AppHome">
-        <EmployeeContext.Provider value={contextValue}>
-          <PublicRoute exact path={'/'} component={LandingPage} />
-          <PublicRoute path={'/login'} component={LoginPage} />
-          <PrivateRoute path={'/main_page'} component={MainPage} />
-          <PrivateRoute path={'/employee_list'} component={EmployeeList} />
-          <PrivateRoute path={'/career_list/:career_id'} component={CareerList} />
-          <PrivateRoute path={'/create_employee'} component={CreateEmployee} />
-          <PrivateRoute path={'/update_search'} component={UpdateSearch} />
-          <PrivateRoute path={'/update_employee/:employee_id'} component={UpdateEmployee} />
-          <PrivateRoute path={'/delete_search'} component={DeleteEmployee} />
-          <PrivateRoute path={'/update_success'} component={UpdateSuccess} />
-          <PrivateRoute path={'/create_success'} component={CreateSuccess} />
-        </EmployeeContext.Provider>
+        <BrowserRouter >
+          <EmployeeContext.Provider value={contextValue}>
+            <PublicRoute exact path={'/'} component={LandingPage} />
+            <PublicRoute path={'/login'} component={LoginPage} />
+            <PrivateRoute path={'/main_page'} component={MainPage} />
+            <PrivateRoute path={'/employee_list'} component={EmployeeList} />
+            <PrivateRoute path={'/career_list/:career_id'} component={CareerList} />
+            <PrivateRoute path={'/create_employee'} component={CreateEmployee} />
+            <PrivateRoute path={'/update_search'} component={UpdateSearch} />
+            <PrivateRoute path={'/update_employee/:employee_id'} component={UpdateEmployee} />
+            <PrivateRoute path={'/delete_success'} component={DeleteSuccess} />
+            <PrivateRoute path={'/delete_search'} component={DeleteEmployee} />
+            <PrivateRoute path={'/update_success'} component={UpdateSuccess} />
+            <PrivateRoute path={'/create_success'} component={CreateSuccess} />
+          </EmployeeContext.Provider>
+        </BrowserRouter>
       </div>
     )
   }

@@ -3,7 +3,8 @@
 
     #create-employee-form {
 
-        text-align: left;
+        display: flex;
+        justify-content: center;
         border: 1px solid black;
         border-radius: 1em;
         margin-bottom: 1em;
@@ -16,6 +17,7 @@
         padding-right: 1em;
         margin-left: auto;
         margin-right: auto;
+        font-size: .8em;
 
     }
 
@@ -33,7 +35,7 @@
 
     #return-main {
 
-        margin-left: 7.75em;
+        margin-left: 4.5em;
         margin-top: 1em;
             
     }
@@ -51,14 +53,15 @@
 
     .create-employee-fields input {
 
-        margin-left: 10em;
+        margin-left: 7em;
         margin-bottom: 1em;
+        max-width: 10em;
         
     }
 
     .create-employee-fields select {
         
-        margin-left: 10em;
+        margin-left: 7em;
         margin-bottom: .5em;
 
     }
@@ -75,6 +78,53 @@
     }
 
    
-
 }
+
+    @media screen and (min-width:700px){
+
+        #create-employee-form{
+            max-width: 70%;
+            font-size: 1em;
+        }
+
+        .create-employee-fields label {
+            margin-left: 2em;
+           
+        }
+
+        .create-employee-fields input {
+
+            margin-left: 12em;
+            max-width: 14em;
+          
+            
+        }
+
+        .create-employee-fields select {
+        
+            margin-left: 12em;
+       
+    
+        }
+
+        #return-main {
+
+            margin-left: 30%;
+                
+        }
+    }
+
+    @media screen and (min-width:1100px){
+
+      #create-employee-form {
+          font-size: 1.2em;
+      }
+
+      
+
+
+    }
+
+
+
 

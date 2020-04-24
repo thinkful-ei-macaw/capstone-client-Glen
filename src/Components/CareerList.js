@@ -6,14 +6,15 @@ import '../Styles/CareerList.css'
 export default class CareerList extends Component {
     static contextType = EmployeeContext;
 
-    findCareerId(careers, id) {
-        return careers ? careers.find((career) => +career.id === +id) : {};
+    findCareerId(careers) {
+        return careers ? careers.find((career) => +career.id === +this.props.match.params.career_id) : {};
     }
 
+
     render() {
-        const { careers } = this.context;
-        const currentCareerId = this.props.match.params.career_id;
-        const careerIdResults = this.findCareerId(careers, currentCareerId);
+
+        const { careers } = this.context
+        const careerIdResults = this.findCareerId(careers);
         return (
             <div id="career-display-form">
                 <main id="career-display">

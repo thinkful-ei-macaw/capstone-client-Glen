@@ -23,7 +23,9 @@ export default class DeleteEmployee extends Component {
                 return res.json();
             })
             .then(res => {
-                res.json();
+                this.setState({
+
+                })
                 this.props.history.push('/delete_success')
             })
             .catch(error => {
@@ -56,7 +58,7 @@ export default class DeleteEmployee extends Component {
 
     render() {
 
-        console.log(this.props)
+
         let employees = [];
 
         let currentEmployee = this.state.employeeList;

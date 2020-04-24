@@ -16,7 +16,8 @@ export default class MainPage extends Component {
 
     render() {
 
-        let displayUser = this.context.users.find(users => users.username == users.username) || [];
+        let displayUsers = this.context.users || [];
+        let displayUser = displayUsers.find(users => users.username == users.username) || [];
 
         return (
             <div>

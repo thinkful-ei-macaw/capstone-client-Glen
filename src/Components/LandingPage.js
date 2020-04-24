@@ -8,7 +8,7 @@ export default class LandingPage extends Component {
     static contextType = EmployeeContext
 
     render() {
-        console.log(this.context.users.username)
+
         return (
             <div>
 

@@ -59,14 +59,11 @@ export default class UpdateEmployee extends Component {
                 //This way you can client has access to the data instead of doing another fetch call to retrieve new data
             })
             .then(data => {
-                console.log(data)
                 this.context.onUpdateEmployee(data)
-                console.log(this.props.history.push('/update_success'))
                 this.props.history.push('/update_success')
 
             })
             .catch(error => {
-                console.log(error)
                 this.setState({
                     error
                 })
@@ -94,7 +91,6 @@ export default class UpdateEmployee extends Component {
             return career.id === employee.career_id
         }) || {}
 
-        console.log(this.props.match.params.employee_id)
         return (
 
             <div>
@@ -143,7 +139,7 @@ export default class UpdateEmployee extends Component {
                                 <select htmlFor="careers"
                                     onChange={e => this.setState({ career_id: e.target.value })}>
                                     <option value="default">Select Career...</option>
-                                    {this.context.careers.map(career =>
+                                    {careers.map(career =>
                                         careerInfo.id == career.id ? <option selected value={career.id} key={career.id}>
                                             {career.position}
                                         </option> : <option value={career.id} key={career.id}>
@@ -152,7 +148,18 @@ export default class UpdateEmployee extends Component {
                                 </select>
                                 <br />
 
-                                <input id="update-btn" type="submit" />
+                                <input id="update-btn" type="submit"
+                                    disabled={
+                                        (!this.state.first_name &&
+                                            !this.state.last_name &&
+                                            !this.state.address &&
+                                            !this.state.city &&
+                                            !this.state.state &&
+                                            !this.state.zip_code &&
+                                            !this.state.phone &&
+                                            !this.state.career_id) || this.state.career_id === 'default'
+
+                                    } />
                                 <br />
                                 <Link to='/main_page'>
                                     <div id="return-to-main">

@@ -1,10 +1,9 @@
 const api_config = {
-    employees: 'http://localhost:8080/api/employees',
-    careers: 'http://localhost:8080/api/careers',
-    users: 'http://localhost:8080/api/users',
-    API_ENDPOINT: 'http://localhost:8080/api',
-    TOKEN_KEY: 'employees-client-auth-token',
-
+    employees: 'https://immense-refuge-35905.herokuapp.com/api/employees',
+    careers: 'https://immense-refuge-35905.herokuapp.com/api/careers',
+    users: 'https://immense-refuge-35905.herokuapp.com/api/users',
+    API_ENDPOINT: 'https://immense-refuge-35905.herokuapp.com/api',
+    API_KEY: 'process.env.REACT_APP_API_KEY',
 }
 
 export default api_config;
