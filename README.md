@@ -3,6 +3,10 @@
 
 [LIVE VERSION](https://management-app-employee-database.now.sh/)
 
+## Login Info 
+UserName: Alex
+Password: password
+
 A simple employee managment app with a minimalist design.
 Used for storing, updating, and deleting an employee roster. 
 
