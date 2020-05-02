@@ -22,7 +22,6 @@ export default class DeleteEmployee extends Component {
                 method: 'DELETE'
             })
                 .then((res) => {
-                    console.log('Do you see me')
                     if (!res.ok) {
                         return res.json().then(error => {
                             throw error;

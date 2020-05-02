@@ -81,7 +81,6 @@ export default class CreateEmployee extends Component {
             })
             .then(data => {
                 this.context.onAddEmployee(data);
-                console.log(this.context.onAddEmployee)
                 this.props.history.push('/create_success');
 
             })

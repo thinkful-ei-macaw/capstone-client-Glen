@@ -103,7 +103,6 @@ export default class App extends Component {
 
 
   render() {
-    console.log(this.state.employees)
     const contextValue = {
       employees: this.state.employees,
       careers: this.state.careers,

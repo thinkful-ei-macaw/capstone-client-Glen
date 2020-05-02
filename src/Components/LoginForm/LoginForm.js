@@ -46,7 +46,6 @@ export default class LoginForm extends Component {
 
     render() {
         const { error } = this.state
-        console.log(this.state.error)
         return (
             <div>
                 <main id="login-form-main">
