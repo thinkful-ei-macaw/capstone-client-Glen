@@ -25,7 +25,7 @@ export default class App extends Component {
       employees: [],
       careers: [],
       users: [],
-      valid: true
+
 
     }
   }
@@ -61,18 +61,6 @@ export default class App extends Component {
       )
   }
 
-  componentDidUpdate() {
-    console.log(this.state.employees)
-    if (this.state.valid) {
-      this.setState({
-        employees: this.state.employees,
-        valid: false
-      })
-    }
-
-  }
-
-
 
   addEmployee = (employee) => {
     this.setState({
@@ -92,6 +80,14 @@ export default class App extends Component {
 
 
   }
+
+  // onDeleteConfirm = () => {
+
+  //   this.props.history
+
+
+  // }
+
 
   updateEmployee = (employee) => {
     let newUpdateEmployee = [...this.state.employees]

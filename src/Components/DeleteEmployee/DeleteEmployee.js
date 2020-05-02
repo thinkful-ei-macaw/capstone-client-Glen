@@ -15,26 +15,29 @@ export default class DeleteEmployee extends Component {
     static contextType = EmployeeContext
 
     handleDeleteEmployee = (id) => {
-        fetch(`${api_config.employees}/${id}`, {
-            method: 'DELETE'
-        })
-            .then((res) => {
-                console.log('Do you see me')
-                if (!res.ok) {
-                    return res.json().then(error => {
-                        throw error;
-                    });
-                }
-                return res
-            })
-            .then(() => {
-                this.context.onDeleteEmployee(id)
-                this.props.history.push('/delete_success')
-            })
-            .catch(error => {
 
-                this.setState({ error })
+        if (this.props.history.push('/delete_confirm'))
+
+            fetch(`${api_config.employees}/${id}`, {
+                method: 'DELETE'
             })
+                .then((res) => {
+                    console.log('Do you see me')
+                    if (!res.ok) {
+                        return res.json().then(error => {
+                            throw error;
+                        });
+                    }
+                    return res
+                })
+                .then(() => {
+                    this.context.onDeleteEmployee(id)
+                    this.props.history.push('/delete_success')
+                })
+                .catch(error => {
+
+                    this.setState({ error })
+                })
     };
 
     componentDidMount = () => {

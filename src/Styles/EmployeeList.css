@@ -5,7 +5,7 @@
       padding-left: 0;
     }
 
-    .employee-list-title{
+    #current-employee-search{
       text-align: center;
       color: white;
 
@@ -40,42 +40,48 @@
       color: orange;
     }
 
+    #employee-search {
+      width: 15em;
+      padding: .3em;
+  }
+
+  #employee-search:hover{
+      cursor: pointer;
+  }
 
 
-    .employee-component {
-    text-align: center;
-    padding-left: 4%;
-    padding-right: 4%;
-    border: 1px solid black;
-    margin-bottom: 1em;
-    border-radius: 1em;
-    background-color: white;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+
+    .employee-list-main {
+  
+      text-align: center;
+      border: 1px solid black;
+      border-radius: 1em;
+      margin-bottom: 1em;
+      margin-top: 1.5em;
+      padding: 1em 0 1em 0;
+      background-color: white;
+      color: black;
+      max-width: 90%;
+      padding-left: 1em;
+      padding-right: 1em;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-  
 } 
 
 @media screen and (min-width: 700px) {
 
-  .employee-component {
-    max-width: 65%;
-    padding-left: 10%;
-    padding-right: 10%;
+  .employee-list-main {
+    max-width: 70%;
   }
-
-
 
 
 }
 
 @media screen and (min-width:1100px){
 
-  .employee-component {
-    padding-left: 10%;
-    padding-right: 10%;
+  .employee-list-main {
     max-width: 60%;
     font-size: 1.2em;
     }

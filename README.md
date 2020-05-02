@@ -20,9 +20,10 @@ After login, the user is presented with a display of the app functions
 
 ## View Employees
 
-The user can view the current employee roster with a link to their career
+The user can view the current employee roster and search for an employee as well with a link to their career
 
-![screenshot](./src/repo-images/EmployeeRoster.png)
+
+![screenshot](./src/repo-images/search-employee.png)
 
 ## Create Employees
 
