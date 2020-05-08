@@ -81,13 +81,6 @@ export default class App extends Component {
 
   }
 
-  // onDeleteConfirm = () => {
-
-  //   this.props.history
-
-
-  // }
-
 
   updateEmployee = (employee) => {
     let newUpdateEmployee = [...this.state.employees]

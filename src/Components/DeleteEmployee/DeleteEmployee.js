@@ -16,27 +16,25 @@ export default class DeleteEmployee extends Component {
 
     handleDeleteEmployee = (id) => {
 
-        if (this.props.history.push('/delete_confirm'))
-
-            fetch(`${api_config.employees}/${id}`, {
-                method: 'DELETE'
+        fetch(`${api_config.employees}/${id}`, {
+            method: 'DELETE'
+        })
+            .then((res) => {
+                if (!res.ok) {
+                    return res.json().then(error => {
+                        throw error;
+                    });
+                }
+                return res
             })
-                .then((res) => {
-                    if (!res.ok) {
-                        return res.json().then(error => {
-                            throw error;
-                        });
-                    }
-                    return res
-                })
-                .then(() => {
-                    this.context.onDeleteEmployee(id)
-                    this.props.history.push('/delete_success')
-                })
-                .catch(error => {
+            .then(() => {
+                this.context.onDeleteEmployee(id)
+                this.props.history.push('/delete_success')
+            })
+            .catch(error => {
 
-                    this.setState({ error })
-                })
+                this.setState({ error })
+            })
     };
 
     componentDidMount = () => {
