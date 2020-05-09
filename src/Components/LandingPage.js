@@ -44,7 +44,7 @@ export default class LandingPage extends Component {
                             <h3>Update employee records on the go</h3>
                         </header>
                         <p>An easy to use interface allows modification of current employee profiles.</p>
-                        <p>Wish to leave comments on work performance? Leadership? Or update employee data?</p>
+                        <p>Need to update employee information or modifiy their current career?</p>
                         <p>Make it so!</p>
                     </section>
                     <section>
